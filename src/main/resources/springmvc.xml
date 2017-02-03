@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+>
+
+    <!-- 处理器映射器 根据url匹配bean的name 处理器实现了 HandlerMapping接口 -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+    <!--<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <map>
+                <entry key="/hello.action" value-ref="hello"/>
+                <entry key="/edit.action" value-ref="editStudent"/>
+                <entry key="/saveAndUpdate.action" value-ref="saveStudent"/>
+            </map>
+        </property>
+    </bean>-->
+
+    <!-- 处理器适配器 实现了HandlerAdapter接口 action按照适配器要求开发, 规则是实现Controller接口 -->
+
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+    <!--<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>-->
+
+    <!-- 视图解析器 解析jsp视图, 默认使用jstl 要求classpath下要有jstl的jar包 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
+
+    <!-- 配置action -->
+    <bean id="hello" name="/hello.action" class="cn.springmvc.handler.Hello"/>
+    <bean name="/edit.action" class="cn.springmvc.action.EditStudent"/>
+    <bean name="/saveAndUpdate.action" class="cn.springmvc.action.SaveStudent"/>
+
+</beans>
