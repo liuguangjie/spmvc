@@ -9,17 +9,17 @@
 >
 
     <!-- 处理器映射器 根据url匹配bean的name 处理器实现了 HandlerMapping接口 -->
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+    <!--<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />-->
 
-    <!--<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <map>
-                <entry key="/hello.action" value-ref="hello"/>
-                <entry key="/edit.action" value-ref="editStudent"/>
-                <entry key="/saveAndUpdate.action" value-ref="saveStudent"/>
+                <entry key="/hello" value-ref="hello"/>
+                <entry key="/edit" value-ref="editStudent"/>
+                <entry key="/saveAndUpdate" value-ref="saveStudent"/>
             </map>
         </property>
-    </bean>-->
+    </bean>
 
     <!-- 处理器适配器 实现了HandlerAdapter接口 action按照适配器要求开发, 规则是实现Controller接口 -->
 
@@ -30,8 +30,8 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
 
     <!-- 配置action -->
-    <bean id="hello" name="/hello.action" class="cn.springmvc.handler.Hello"/>
-    <bean name="/edit.action" class="cn.springmvc.action.EditStudent"/>
-    <bean name="/saveAndUpdate.action" class="cn.springmvc.action.SaveStudent"/>
+    <bean id="hello" name="/hello" class="cn.springmvc.handler.Hello"/>
+    <bean id="editStudent" name="/edit" class="cn.springmvc.action.EditStudent"/>
+    <bean id="saveStudent" name="/saveAndUpdate" class="cn.springmvc.action.SaveStudent"/>
 
 </beans>
